@@ -1,0 +1,12 @@
+Form {
+    width: 30%;
+    margin: auto;
+    margin-top: 5rem;
+}
+Button,
+Label {
+    float: left;
+}
+a {
+    float: left;
+}

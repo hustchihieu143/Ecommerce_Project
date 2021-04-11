@@ -1,0 +1,12 @@
+.display {
+    list-style-type: none;
+    width: 20%;
+    margin-left: 5px;
+}
+Card {
+    float: left;
+}
+ul {
+    display: flex;
+    margin-top: 50px;
+}
