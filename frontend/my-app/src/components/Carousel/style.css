@@ -1,0 +1,20 @@
+#left {
+    float: left;
+    width: 65%;
+    border-radius: 5px;
+}
+#right {
+    float: right;
+    width: 34.5%;
+    background-color: white;
+    height: 100%;
+}
+
+.boxCarousel {
+    height: 308px;
+    border-radius: 5px;
+    padding: 4px;
+}
+.parentCarousel {
+    background-color: white;
+}

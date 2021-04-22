@@ -3,6 +3,11 @@ import Header from "../../components/Header";
 import Title from "../../components/Title";
 import Footer from "../../components/Footer";
 import Promotion from "../../components/Promotion";
+import Navbar from "../../components/Navbar";
+import Carousel from "../../components/Carousel";
+import DanhMuc from "../../components/DanhMuc";
+import "./style.css";
+import { Container } from "react-bootstrap";
 
 /**
  * @author
@@ -10,14 +15,19 @@ import Promotion from "../../components/Promotion";
  **/
 
 const Home = () => {
-    console.log("Home");
     return (
-        <section>
+        <div className="all">
             <Header></Header>
-            <Title></Title>
-            <Promotion></Promotion>
+            <Navbar />
+            <div className="content">
+                <Container>
+                    <Carousel></Carousel>
+                    <DanhMuc />
+                    <Promotion></Promotion>
+                </Container>
+            </div>
             <Footer></Footer>
-        </section>
+        </div>
     );
 };
 

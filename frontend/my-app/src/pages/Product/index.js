@@ -4,6 +4,7 @@ import { Card, Button, Modal, Form } from "react-bootstrap";
 import Header from "../../components/Header";
 import "./style.css";
 import TaskForm from "../../components/TaskForm";
+import { BrowserRouter } from "react-router-dom";
 
 class Product extends Component {
     constructor(props) {
@@ -32,6 +33,10 @@ class Product extends Component {
             .catch((err) => {
                 console.log(err);
             });
+        // axios({
+        //     method: "GET",
+        //     url: "http://localhost:2000/public/OwuScJTIY-Screenshot (271).png",
+        // }).then((res) => {});
     }
 
     async addToCart(product, price) {
@@ -71,11 +76,13 @@ class Product extends Component {
 
     render() {
         var { products } = this.state;
+        let imageFile =
+            "http:localhost:2000/public/X-zFvcrZH-Activity_Them_phong.png";
 
         return (
             <>
                 <Header />
-                <div>
+                <BrowserRouter>
                     <h1>Products</h1>
                     <ul>
                         {products.products &&
@@ -88,7 +95,11 @@ class Product extends Component {
                                         >
                                             <img
                                                 className="card-img-top"
-                                                src="https://images.fpt.shop/unsafe/fit-in/214x214/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/2/3/637479612642653058_ip-12-pro-dd-2nam.jpg"
+                                                src={
+                                                    "http://localhost:2000/public/" +
+                                                    product.productPictures[0]
+                                                        .img
+                                                }
                                                 alt="Card image cap"
                                             />
                                             <div className="card-body">
@@ -119,66 +130,7 @@ class Product extends Component {
                                 </li>
                             ))}
                     </ul>
-                </div>
-                <div>
-                    <Button
-                        variant="primary"
-                        type="submit"
-                        onClick={this.handleCreate}
-                    >
-                        Create Product
-                    </Button>
-                    <Modal show={this.state.isShow}>
-                        <Modal.Header>Create Product</Modal.Header>
-                        <Modal.Body>
-                            <Form>
-                                <h1>Create Product</h1>
-                                <Form.Group>
-                                    <Form.Label>Name product</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter product name"
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Price</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter price"
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>Quantity</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter price"
-                                    />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Label>description</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter description"
-                                    />
-                                </Form.Group>
-
-                                <Form.Group>
-                                    <Form.Label>Picture</Form.Label>
-                                    <input type="file" name="productPictures" />
-                                </Form.Group>
-
-                                <Button variant="primary" type="submit">
-                                    Submit
-                                </Button>
-                            </Form>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button onClick={this.handleClose}>
-                                Close Modal
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
-                </div>
+                </BrowserRouter>
             </>
         );
     }

@@ -9,7 +9,6 @@ exports.requireSignin = (req, res, next) => {
     } else {
         return res.status(400).json({ message: "Authorization required" });
     }
-
     next();
 };
 

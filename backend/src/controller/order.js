@@ -1,5 +1,6 @@
 const Order = require("../models/order");
 const Cart = require("../models/cart");
+const Product = require("../models/product");
 
 module.exports.handleOrder = (req, res) => {
     const userId = req.user._id;
@@ -25,11 +26,56 @@ module.exports.handleOrder = (req, res) => {
                         (err, success) => {
                             if (err)
                                 return res.status(404).json({ message: err });
-                            if (success)
-                                return res.status(200).json({
-                                    message: "Remove cart success",
-                                    order: order,
-                                });
+                            if (success) {
+                                for (
+                                    let i = 0;
+                                    i < cartItem.cartItems.length;
+                                    i++
+                                ) {
+                                    Product.findOne({
+                                        _id: cartItem.cartItems[i].product,
+                                    }).exec((err, product) => {
+                                        if (err)
+                                            return res
+                                                .status(404)
+                                                .json({ message: err.message });
+                                        if (product) {
+                                            console.log("okoko");
+                                            let quantity = product.quantity;
+                                            let condition = {
+                                                _id:
+                                                    cartItem.cartItems[i]
+                                                        .product,
+                                            };
+                                            let update = {
+                                                quantity:
+                                                    quantity -
+                                                    cartItem.cartItems[i]
+                                                        .quantity,
+                                            };
+                                            Product.findOneAndUpdate(
+                                                condition,
+                                                update
+                                            ).exec((err, product) => {
+                                                if (err)
+                                                    return res
+                                                        .status(404)
+                                                        .json({
+                                                            message:
+                                                                err.message,
+                                                        });
+
+                                                if (product)
+                                                    return res
+                                                        .status(200)
+                                                        .json({
+                                                            message: "true",
+                                                        });
+                                            });
+                                        }
+                                    });
+                                }
+                            }
                         }
                     );
                 }

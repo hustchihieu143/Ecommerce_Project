@@ -89,10 +89,11 @@ class CreateProduct extends Component {
         console.log("state: ", this.state);
         return (
             <Form onSubmit={this.handleSubmit}>
-                <h1>Create Product</h1>
+                <h1 style={{ width: "100px" }}>Create Product</h1>
                 <Form.Group>
                     <Form.Label>Name product</Form.Label>
                     <Form.Control
+                        style={{ width: "200px" }}
                         type="text"
                         placeholder="Enter product name"
                         value={this.state.name}

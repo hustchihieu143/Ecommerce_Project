@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import {
     BrowserRouter as Router,
     Route,
@@ -15,6 +14,7 @@ import Cart from "./pages/Cart";
 import CreateProduct from "./pages/CreateProduct";
 import ProductAdmin from "./pages/ProductAdmin";
 import CategoryAdmin from "./pages/CategoryAdmin";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
     const RedirectToSignin = ({ component: Component, ...rest }) => {
@@ -26,21 +26,6 @@ function App() {
                     const item = localStorage.getItem("user");
                     return item === undefined || item === null ? (
                         <Redirect to="/signin" />
-                    ) : (
-                        <Component {...props} />
-                    );
-                }}
-            />
-        );
-    };
-    const RedirectToProductAdmin = ({ component: Component, ...rest }) => {
-        return (
-            <Route
-                {...rest}
-                render={(props) => {
-                    const item = 5;
-                    return item >= 0 ? (
-                        <Redirect to="/product/admin" />
                     ) : (
                         <Component {...props} />
                     );
@@ -70,6 +55,7 @@ function App() {
                     <Route path="/cart" component={Cart} />
                     <Route path="/signin" component={Signin} />
                     <Route path="/signup" component={Signup} />
+                    <Route path="/admin" component={AdminPage} />
                     <Route path="/products" component={Product} />
 
                     <Route exact path="/product/:id" component={InfoProduct} />

@@ -1,8 +1,26 @@
-.khuyen-mai {
-    margin-top: 50px;
+.boxKhuyenMai {
+    height: 700px;
+    background-color: white;
+    margin-top: 20px;
 }
-
-.text {
-    width: 25%;
+.titleKhuyenMai {
+    padding: 10px;
+}
+.iconKhuyenMai {
     color: red;
+    height: 40px;
+    float: left;
+    width: 30px;
+}
+.titleKhuyenMai h4 {
+    color: red;
+    margin-left: 30px;
+}
+Button {
+    border: white;
+    background-color: white;
+}
+.footerCar {
+    background-color: #e5e5e5;
+    padding: 5px;
 }
