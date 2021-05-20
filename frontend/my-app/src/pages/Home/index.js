@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../../components/Header";
-import Title from "../../components/Title";
 import Footer from "../../components/Footer";
 import Promotion from "../../components/Promotion";
 import Navbar from "../../components/Navbar";

@@ -8,6 +8,7 @@ const {
     updateProduct,
     getProducts,
     getProduct,
+    searchProductByName,
 } = require("../controller/product");
 const multer = require("multer");
 const shortid = require("shortid");
@@ -55,6 +56,8 @@ router.post(
 );
 
 router.get("/products", getProducts);
+
+router.post("/product/search", searchProductByName);
 
 router.get("/product/:_id", getProduct);
 

@@ -1,5 +1,4 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import "./style.css";
 
 const FooterPage = () => {
@@ -20,6 +19,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/113.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">
@@ -40,6 +40,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/111.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">
@@ -60,6 +61,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/112.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">
@@ -80,6 +82,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/114.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">
@@ -100,6 +103,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/115.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">
@@ -120,6 +124,7 @@ const FooterPage = () => {
                             >
                                 <img
                                     src="https://mdbootstrap.com/img/new/fluid/city/116.jpg"
+                                    alt="ok"
                                     className="w-100"
                                 />
                                 <a href="#!">

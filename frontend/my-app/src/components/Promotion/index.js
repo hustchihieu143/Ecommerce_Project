@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Card, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import "./style.css";
 import { AiFillFire } from "react-icons/ai";
 /**
@@ -33,10 +33,12 @@ const Promotion = (props) => {
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528595027518390_B%E1%BA%A3o%20h%C3%A0nh%202%20n%C4%83m.png"
+                                alt="ok"
                             ></img>
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528703305032952_vnpay400.jpeg"
+                                alt="ok"
                             ></img>
                             <br />
                             <br />
@@ -62,10 +64,12 @@ const Promotion = (props) => {
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528595027518390_B%E1%BA%A3o%20h%C3%A0nh%202%20n%C4%83m.png"
+                                alt="ok"
                             ></img>
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528703305032952_vnpay400.jpeg"
+                                alt="ok"
                             ></img>
                             <br />
                             <br />
@@ -91,10 +95,12 @@ const Promotion = (props) => {
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528595027518390_B%E1%BA%A3o%20h%C3%A0nh%202%20n%C4%83m.png"
+                                alt="ok"
                             ></img>
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528703305032952_vnpay400.jpeg"
+                                alt="ok"
                             ></img>
                             <br />
                             <br />
@@ -120,10 +126,12 @@ const Promotion = (props) => {
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528595027518390_B%E1%BA%A3o%20h%C3%A0nh%202%20n%C4%83m.png"
+                                alt="ok"
                             ></img>
                             <img
                                 style={{ float: "left" }}
                                 src="https://images.fpt.shop/unsafe/fit-in/45x45/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528703305032952_vnpay400.jpeg"
+                                alt="ok"
                             ></img>
                             <br />
                             <br />

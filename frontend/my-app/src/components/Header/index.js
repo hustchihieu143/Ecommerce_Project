@@ -1,18 +1,7 @@
 import React, { Component } from "react";
-import {
-    Navbar,
-    Nav,
-    Button,
-    InputGroup,
-    FormControl,
-    NavDropdown,
-    Dropdown,
-    Container,
-} from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import { BiCart } from "react-icons/bi";
-import { BsSearch } from "react-icons/bs";
-import axios from "axios";
 
 class Header extends Component {
     constructor(props) {
@@ -33,7 +22,7 @@ class Header extends Component {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <InputGroup className="ml-5 mt-1">
+                            {/* <InputGroup className="ml-5 mt-1">
                                 <FormControl
                                     placeholder="Search..."
                                     aria-label="Recipient's username"
@@ -43,7 +32,7 @@ class Header extends Component {
                                     <BsSearch />
                                 </Button>
                             </InputGroup>
-                            <Nav.Link href="/products">Products</Nav.Link>
+                            <Nav.Link href="/products">Products</Nav.Link> */}
                         </Nav>
                         <Nav>
                             <Nav.Link href="#">

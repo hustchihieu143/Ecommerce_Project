@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Carousel, Container } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { BrowserRouter } from "react-router-dom";
 import "./style.css";
 
@@ -36,19 +36,25 @@ class Carousel1 extends Component {
                         </div>
                         <div id="right">
                             <img
-                                style={{ borderRadius: "5px" }}
-                                style={({ height: "70px" }, { width: "100%" })}
+                                style={
+                                    ({ height: "70px" },
+                                    { width: "100%" },
+                                    { borderRadius: "5px" })
+                                }
                                 src="https://images.fpt.shop/unsafe/fit-in/385x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/6/637532663865219473_F-H2_385x100.png"
+                                alt="oko"
                             ></img>
                             <img
                                 style={({ height: "70px" }, { width: "100%" })}
                                 src="https://images.fpt.shop/unsafe/fit-in/385x100/filters:quality(90):fill(white)/fptshop.com.vn/Uploads/Originals/2021/4/1/637528348995862395_F-H2_385x100.png"
+                                alt="fefe"
                             ></img>
                             <h6>Thông tin nổi bật</h6>
                             <span>
                                 <img
                                     style={{ borderRadius: "5px" }}
                                     src="https://images.fpt.shop/unsafe/fit-in/70x40/filters:quality(90):fill(white)/https://fptshop.com.vn/uploads/images/tin-tuc/128769/Originals/stories_ava.png"
+                                    alt="hello"
                                 ></img>
                                 <h6 style={{ float: "right" }}>
                                     Iphone 12 giảm đến 2 triệu

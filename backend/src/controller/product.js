@@ -168,3 +168,18 @@ exports.getProduct = async function (req, res) {
         return res.json({ message: false });
     }
 };
+
+exports.searchProductByName = async function (req, res) {
+    let q = req.body.value;
+    console.log(q);
+    console.log("alo");
+    await Product.find({ name: { $regex: q } }).exec((err, product) => {
+        if (err) return res.status(404).json({ message: err.message });
+        else {
+            return res.status(200).json({
+                products: product,
+                message: true,
+            });
+        }
+    });
+};

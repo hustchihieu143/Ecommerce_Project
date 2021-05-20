@@ -85,7 +85,7 @@ class CreateProduct extends Component {
     }
 
     render() {
-        const { categories, selectedFile } = this.state;
+        const { categories } = this.state;
         console.log("state: ", this.state);
         return (
             <Form onSubmit={this.handleSubmit}>
