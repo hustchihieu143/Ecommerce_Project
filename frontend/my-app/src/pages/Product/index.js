@@ -30,13 +30,14 @@ class Product extends Component {
                 this.setState({
                     products: res.data,
                 });
+                console.log(this.state.products);
             })
             .catch((err) => {
                 console.log(err);
             });
     }
 
-    async addToCart(product, price) {
+    async addToCart(product, price, img) {
         await axios({
             method: "POST",
             url: "http://localhost:2000/api/user/cart/addtocart",
@@ -48,6 +49,7 @@ class Product extends Component {
                     product: product,
                     quantity: 1,
                     price: price,
+                    img: img,
                 },
             },
         })
@@ -96,24 +98,145 @@ class Product extends Component {
             <>
                 <Header />
 
-                <form>
-                    <Form.Control
+                <div>
+                    <input
                         placeholder="Search..."
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
                         value={this.state.searchValue}
                         onChange={(e) =>
                             this.setState({ searchValue: e.target.value })
                         }
                     />
-                    <Button
-                        className="pd-3"
-                        type="submit"
-                        onClick={this.searchProducts}
-                    >
+                    <Button type="submit" onClick={this.searchProducts}>
                         <BsSearch />
                     </Button>
-                </form>
+                </div>
+
+                {/*Section: Block Content*/}
+                <section className="text-center">
+                    {/* Grid row */}
+                    <div className="row">
+                        {/* Grid column */}
+                        <div className="col-md-6 col-lg-3 mb-5">
+                            {/* Card */}
+                            <div className>
+                                <div className="view zoom overlay z-depth-2 rounded">
+                                    <a href="#!">
+                                        <div className="mask">
+                                            <img
+                                                className="img-fluid w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
+                                            />
+                                            <div className="mask rgba-black-slight" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="pt-4">
+                                    <h5>Fantasy T-shirt</h5>
+                                    <h6>12.99 $</h6>
+                                </div>
+                            </div>
+                            {/* Card */}
+                        </div>
+                        {/* Grid column */}
+                        {/* Grid column */}
+                        <div className="col-md-6 col-lg-3 mb-5">
+                            {/* Card */}
+                            <div className>
+                                <div className="view zoom overlay z-depth-2 rounded">
+                                    <a href="#!">
+                                        <div className="mask">
+                                            <img
+                                                className="img-fluid w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
+                                            />
+                                            <div className="mask rgba-black-slight" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="pt-4">
+                                    <h5>Fantasy T-shirt</h5>
+                                    <h6>12.99 $</h6>
+                                </div>
+                            </div>
+                            {/* Card */}
+                        </div>
+                        {/* Grid column */}
+                        {/* Grid column */}
+                        <div className="col-md-6 col-lg-3 mb-5">
+                            {/* Card */}
+                            <div className>
+                                <div className="view zoom overlay z-depth-2 rounded">
+                                    <h4 className="mb-0">
+                                        <span className="badge badge-primary badge-pill badge-news">
+                                            Sale
+                                        </span>
+                                    </h4>
+                                    <a href="#!">
+                                        <div className="mask">
+                                            <img
+                                                className="img-fluid w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg"
+                                            />
+                                            <div className="mask rgba-black-slight" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <div className="pt-4">
+                                    <h5>Fantasy T-shirt</h5>
+                                    <h6>
+                                        <span className="text-danger mr-1">
+                                            $12.99
+                                        </span>
+                                        <span className="text-grey">
+                                            <s>$36.99</s>
+                                        </span>
+                                    </h6>
+                                </div>
+                            </div>
+                            {/* Card */}
+                        </div>
+                        {/* Grid column */}
+                        {/* Grid column */}
+                        <div className="col-md-6 col-lg-3 mb-5">
+                            {/* Card */}
+                            <div className>
+                                <div className="view zoom overlay z-depth-2 rounded">
+                                    <h4 className="mb-0">
+                                        <span className="badge badge-primary badge-pill badge-news">
+                                            Sale
+                                        </span>
+                                    </h4>
+                                    <a href="#!">
+                                        <div className="mask">
+                                            <img
+                                                className="img-fluid w-100"
+                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg"
+                                            />
+                                            <div className="mask rgba-black-slight" />
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <div className="pt-4">
+                                    <h5>Fantasy T-shirt</h5>
+                                    <h6>
+                                        <span className="text-danger mr-1">
+                                            $12.99
+                                        </span>
+                                        <span className="text-grey">
+                                            <s>$36.99</s>
+                                        </span>
+                                    </h6>
+                                </div>
+                            </div>
+                            {/* Card */}
+                        </div>
+                        {/* Grid column */}
+                    </div>
+                    {/* Grid row */}
+                </section>
+                {/*Section: Block Content
+                 */}
 
                 <h1>Products</h1>
                 <ul>
@@ -148,7 +271,10 @@ class Product extends Component {
                                                 onClick={() =>
                                                     this.addToCart(
                                                         product._id,
-                                                        product.price
+                                                        product.price,
+                                                        product
+                                                            .productPictures[0]
+                                                            .img
                                                     )
                                                 }
                                             >

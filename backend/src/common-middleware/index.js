@@ -9,6 +9,7 @@ exports.requireSignin = (req, res, next) => {
     } else {
         return res.status(400).json({ message: "Authorization required" });
     }
+    console.log("pass requireSignin");
     next();
 };
 
@@ -24,6 +25,7 @@ exports.userMiddleware = (req, res, next) => {
             }
         }
     });
+    console.log("pass user middleware");
     next();
 };
 

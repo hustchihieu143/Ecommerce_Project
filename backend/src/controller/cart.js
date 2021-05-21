@@ -8,7 +8,8 @@ exports.addItemToCart = (req, res) => {
         }
         if (user) {
             let product = req.body.cartItems.product;
-
+            console.log(product);
+            console.log("addToCart");
             const item = user.cartItems.find((c) => c.product == product);
             let condition, update;
 
@@ -24,6 +25,7 @@ exports.addItemToCart = (req, res) => {
                             price: item.price,
                             quantity:
                                 item.quantity + req.body.cartItems.quantity,
+                            img: item.img,
                         },
                     },
                 };
@@ -91,4 +93,29 @@ exports.getItemFromCart = async (req, res) => {
             err: err.messeage,
         });
     }
+};
+
+exports.deleteCartItem = async function (req, res) {
+    let productId = req.params.id;
+    await Cart.findOne({ user: req.user._id }).exec((err, cart) => {
+        if (err) return res.status(404).json({ message: err.message });
+        else {
+            let condition = {
+                user: req.user._id,
+            };
+            let update = {
+                $pull: { cartItems: { product: productId } },
+            };
+            Cart.update(condition, update, { multi: true }).exec(
+                (err, result) => {
+                    if (err) {
+                        return res.status(404).json({ message });
+                    } else
+                        return res
+                            .status(200)
+                            .json({ message: "Update thanh cong" });
+                }
+            );
+        }
+    });
 };

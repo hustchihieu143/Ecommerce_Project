@@ -4,9 +4,11 @@ const Product = require("../models/product");
 
 module.exports.handleOrder = (req, res) => {
     const userId = req.user._id;
+    console.log(userId);
     Cart.findOne({ user: userId }).exec((err, cartItem) => {
         if (err) return res.status(404).json({ message: err.message });
         if (cartItem) {
+            console.log("find user");
             let total = 0;
             for (let i = 0; i < cartItem.cartItems.length; i++) {
                 total +=
@@ -43,9 +45,8 @@ module.exports.handleOrder = (req, res) => {
                                             console.log("okoko");
                                             let quantity = product.quantity;
                                             let condition = {
-                                                _id:
-                                                    cartItem.cartItems[i]
-                                                        .product,
+                                                _id: cartItem.cartItems[i]
+                                                    .product,
                                             };
                                             let update = {
                                                 quantity:
