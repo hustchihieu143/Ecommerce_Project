@@ -1,0 +1,26 @@
+.price-km {
+    font-size: 30px;
+}
+.price {
+    text-decoration: line-through;
+    margin-left: 20px;
+}
+.uu-dai {
+    border: 1px solid #cccccc;
+    background-color: #eeeeee;
+}
+.header-uudai,
+.select {
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
+}
+.uu-dai-them {
+    padding: 10px;
+}
+.uu-dai-them :nth-child(1) {
+    background-color: #bbbbbb;
+    padding: 3px;
+}
+input:focus {
+    background: transparent;
+}

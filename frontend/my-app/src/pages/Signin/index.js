@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./style.css";
 import { withRouter } from "react-router";
-import { Form, Button } from "react-bootstrap";
 
 class Signin extends Component {
     constructor(props) {
@@ -54,35 +53,50 @@ class Signin extends Component {
             <>
                 {/* <Header> </Header> */}
 
-                <Form onSubmit={this.handleSubmit}>
-                    <h1>Signin</h1>
-                    <p className="error">{this.state.err}</p>
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Enter email"
-                            value={this.state.email}
-                            onChange={this.onChangeEmail}
-                        />
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.onChangePassword}
-                        />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                    <br />
-                    <br />
-                    <a href="/signup">Make new account</a>
-                </Form>
+                <div className="wrapper fadeInDown">
+                    <div id="formContent">
+                        {/* Tabs Titles */}
+                        {/* Icon */}
+                        <div className="fadeIn first">
+                            {/* <img
+                                src="http://danielzawadzki.com/codepen/01/icon.svg"
+                                id="icon"
+                                alt="User Icon"
+                            /> */}
+                            <h3>Login</h3>
+                        </div>
+                        {/* Login Form */}
+                        <form onSubmit={this.handleSubmit}>
+                            <input
+                                type="text"
+                                id="login"
+                                className="fadeIn second"
+                                placeholder="Enter email"
+                                value={this.state.email}
+                                onChange={this.onChangeEmail}
+                            />
+                            <input
+                                type="text"
+                                id="password"
+                                className="fadeIn third"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.onChangePassword}
+                            />
+                            <input
+                                type="submit"
+                                className="fadeIn fourth"
+                                defaultValue="Log In"
+                            />
+                        </form>
+                        {/* Remind Passowrd */}
+                        <div id="formFooter">
+                            <a href="#!">Forgot Password?</a>
+                            <br></br>
+                            <a href="/signup">Make new account</a>
+                        </div>
+                    </div>
+                </div>
             </>
         );
     }

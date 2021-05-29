@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
 import Header from "../../components/Header";
 import "./style.css";
@@ -112,180 +112,66 @@ class Product extends Component {
                 </div>
 
                 {/*Section: Block Content*/}
-                <section className="text-center">
-                    {/* Grid row */}
-                    <div className="row">
-                        {/* Grid column */}
-                        <div className="col-md-6 col-lg-3 mb-5">
-                            {/* Card */}
-                            <div className>
-                                <div className="view zoom overlay z-depth-2 rounded">
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <img
-                                                className="img-fluid w-100"
-                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12.jpg"
-                                            />
-                                            <div className="mask rgba-black-slight" />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="pt-4">
-                                    <h5>Fantasy T-shirt</h5>
-                                    <h6>12.99 $</h6>
-                                </div>
-                            </div>
-                            {/* Card */}
-                        </div>
-                        {/* Grid column */}
-                        {/* Grid column */}
-                        <div className="col-md-6 col-lg-3 mb-5">
-                            {/* Card */}
-                            <div className>
-                                <div className="view zoom overlay z-depth-2 rounded">
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <img
-                                                className="img-fluid w-100"
-                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/13.jpg"
-                                            />
-                                            <div className="mask rgba-black-slight" />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="pt-4">
-                                    <h5>Fantasy T-shirt</h5>
-                                    <h6>12.99 $</h6>
-                                </div>
-                            </div>
-                            {/* Card */}
-                        </div>
-                        {/* Grid column */}
-                        {/* Grid column */}
-                        <div className="col-md-6 col-lg-3 mb-5">
-                            {/* Card */}
-                            <div className>
-                                <div className="view zoom overlay z-depth-2 rounded">
-                                    <h4 className="mb-0">
-                                        <span className="badge badge-primary badge-pill badge-news">
-                                            Sale
-                                        </span>
-                                    </h4>
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <img
-                                                className="img-fluid w-100"
-                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg"
-                                            />
-                                            <div className="mask rgba-black-slight" />
-                                        </div>
-                                    </a>
-                                </div>
-                                <div className="pt-4">
-                                    <h5>Fantasy T-shirt</h5>
-                                    <h6>
-                                        <span className="text-danger mr-1">
-                                            $12.99
-                                        </span>
-                                        <span className="text-grey">
-                                            <s>$36.99</s>
-                                        </span>
-                                    </h6>
-                                </div>
-                            </div>
-                            {/* Card */}
-                        </div>
-                        {/* Grid column */}
-                        {/* Grid column */}
-                        <div className="col-md-6 col-lg-3 mb-5">
-                            {/* Card */}
-                            <div className>
-                                <div className="view zoom overlay z-depth-2 rounded">
-                                    <h4 className="mb-0">
-                                        <span className="badge badge-primary badge-pill badge-news">
-                                            Sale
-                                        </span>
-                                    </h4>
-                                    <a href="#!">
-                                        <div className="mask">
-                                            <img
-                                                className="img-fluid w-100"
-                                                src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/14.jpg"
-                                            />
-                                            <div className="mask rgba-black-slight" />
-                                        </div>
-                                    </a>
-                                </div>
 
-                                <div className="pt-4">
-                                    <h5>Fantasy T-shirt</h5>
-                                    <h6>
-                                        <span className="text-danger mr-1">
-                                            $12.99
-                                        </span>
-                                        <span className="text-grey">
-                                            <s>$36.99</s>
-                                        </span>
-                                    </h6>
+                <section className="text-center">
+                    <h1>Products</h1>
+                    {/* Grid row */}
+                    <div className="row" style={{ marginTop: "50px" }}>
+                        {products.products &&
+                            products.products.map((product) => (
+                                <div
+                                    className="col-sm-2"
+                                    style={{ marginBottom: "20px" }}
+                                >
+                                    <div className>
+                                        <div className="view zoom overlay z-depth-2 rounded">
+                                            <a href="#!">
+                                                <div className="mask">
+                                                    <img
+                                                        className="img-fluid w-100"
+                                                        src={
+                                                            "http://localhost:2000/public/" +
+                                                            product
+                                                                .productPictures[0]
+                                                                .img
+                                                        }
+                                                        alt="Product"
+                                                        style={{
+                                                            width: "100%",
+                                                        }}
+                                                    />
+                                                    <div className="mask rgba-black-slight" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div className="pt-4">
+                                            <h5>{product.name}</h5>
+                                            <h6>{product.price} $</h6>
+                                        </div>
+                                        <button
+                                            className="btn btn-primary"
+                                            style={{ marginLeft: "30px" }}
+                                            onClick={() =>
+                                                this.addToCart(
+                                                    product._id,
+                                                    product.price,
+                                                    product.productPictures[0]
+                                                        .img
+                                                )
+                                            }
+                                        >
+                                            Add to card
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            {/* Card */}
-                        </div>
+                            ))}
+
                         {/* Grid column */}
                     </div>
                     {/* Grid row */}
                 </section>
                 {/*Section: Block Content
                  */}
-
-                <h1>Products</h1>
-                <ul>
-                    {products.products &&
-                        products.products.map((product) => (
-                            <li className="display" key={product._id}>
-                                <a href={"/product/" + product._id}>
-                                    <div
-                                        className="card"
-                                        style={{ width: "18rem" }}
-                                    >
-                                        <img
-                                            className="card-img-top"
-                                            src={
-                                                "http://localhost:2000/public/" +
-                                                product.productPictures[0].img
-                                            }
-                                            alt="ok"
-                                        />
-                                        <div className="card-body">
-                                            <h5 className="card-title">
-                                                {product.name}
-                                            </h5>
-                                            <div
-                                                className="alert alert-primary"
-                                                role="alert"
-                                            >
-                                                Price: {product.price}$
-                                            </div>
-                                            <button
-                                                className="btn btn-primary"
-                                                onClick={() =>
-                                                    this.addToCart(
-                                                        product._id,
-                                                        product.price,
-                                                        product
-                                                            .productPictures[0]
-                                                            .img
-                                                    )
-                                                }
-                                            >
-                                                Add to card
-                                            </button>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        ))}
-                </ul>
             </>
         );
     }

@@ -119,3 +119,18 @@ exports.deleteCartItem = async function (req, res) {
         }
     });
 };
+
+exports.updateCart = async (req, res) => {
+    try {
+        const userId = req.user._id;
+        const cart = findOne({ user: userId });
+        if (cart) {
+        } else {
+            return res
+                .status(404)
+                .json({ message: "Không có sản phẩm trong giỏ hàng" });
+        }
+    } catch (err) {
+        return res.status(404).json({ message: err.message });
+    }
+};

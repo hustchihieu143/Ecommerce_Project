@@ -5,6 +5,7 @@ const {
     addItemToCart,
     getItemFromCart,
     deleteCartItem,
+    updateCart,
 } = require("../controller/cart");
 
 router.post(
@@ -27,5 +28,7 @@ router.delete(
     userMiddleware,
     deleteCartItem
 );
+
+router.post("/user/cart/update", requireSignin, userMiddleware, updateCart);
 
 module.exports = router;

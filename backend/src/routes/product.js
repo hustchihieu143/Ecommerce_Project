@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Product = require("../models/product");
 const {
     createProduct,
     getProductsBySlug,
@@ -9,6 +8,7 @@ const {
     getProducts,
     getProduct,
     searchProductByName,
+    getProductsByCategoryId,
 } = require("../controller/product");
 const multer = require("multer");
 const shortid = require("shortid");
@@ -60,5 +60,7 @@ router.get("/products", getProducts);
 router.post("/product/search", searchProductByName);
 
 router.get("/product/:_id", getProduct);
+
+router.get("/getproducts/:categoryId", getProductsByCategoryId);
 
 module.exports = router;

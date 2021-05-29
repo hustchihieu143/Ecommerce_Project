@@ -1,17 +1,28 @@
 const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema(
     {
-        user: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
+        user: { type: mongoose.Schema.Types.ObjectId, ref: "Users" }, // userId
+        userName: { type: String },
         address: {
-            type: String,
-            require: true,
+            country: { type: String }, // quoc gia
+            city: { type: String }, // tinh, thanh pho
+            district: { type: String }, // quan, huyen
+            ward: { type: String }, // phuong, xã
         },
-        // product: { type: String },
-        // category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+        listProducts: [
+            {
+                name: { type: String },
+                productId: { type: String },
+                quantity: { type: Number },
+                price: { type: Number },
+                img: { type: String },
+            },
+        ],
         total: {
+            // tong gia tri don hang
             type: Number,
         },
-        trangThai: {
+        status: {
             type: String,
         },
     },

@@ -15,6 +15,9 @@ import CreateProduct from "./pages/CreateProduct";
 import ProductAdmin from "./pages/ProductAdmin";
 import CategoryAdmin from "./pages/CategoryAdmin";
 import AdminPage from "./pages/AdminPage";
+import ProductsByCategory from "./pages/ProductsByCategory";
+import Address from "./pages/Address";
+import ProductDetail from "./pages/ProductDetail";
 
 function App() {
     const RedirectToSignin = ({ component: Component, ...rest }) => {
@@ -57,7 +60,12 @@ function App() {
                     <Route path="/signup" component={Signup} />
                     <Route path="/admin" component={AdminPage} />
                     <Route path="/products" component={Product} />
-
+                    <Route path="/product/:id" component={ProductDetail} />
+                    <Route path="/checkout/:cartId" component={Address} />
+                    <Route
+                        path="/getproducts/:categoryId"
+                        component={ProductsByCategory}
+                    />
                     <Route exact path="/product/:id" component={InfoProduct} />
                     <Route exact path="/:slug" component={ProductsBySlug} />
 

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Container } from "react-bootstrap";
+import Header from "../../components/Header";
 
 class Cart extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cartItems: [],
+            cartItems: {},
+            cartId: "",
         };
         this.handleDelete = this.handleDelete.bind(this);
     }
@@ -23,7 +25,9 @@ class Cart extends Component {
                 this.setState({
                     cartItems: res.data,
                 });
-                console.log(this.state.cartItems);
+                this.setState({
+                    cartId: res.data.cart._id,
+                });
             })
             .catch(function (error) {
                 console.log(error);
@@ -47,16 +51,19 @@ class Cart extends Component {
 
     render() {
         const { cartItems } = this.state;
-        let total, result;
+        let total, result, cartId;
         if (cartItems.cart) {
             total = cartItems.cart.cartItems.reduce((total, item) => {
                 return total + item.price * item.quantity;
             }, 0);
             result = total + 0.1 * total;
+            cartId = cartItems.cart._id;
         }
+        //console.log("cartId: ", cartId);
 
         return (
             <>
+                <Header />
                 <Container>
                     {/*Section: Block Content*/}
                     <section>
@@ -73,36 +80,40 @@ class Cart extends Component {
                                         {cartItems.cart &&
                                             cartItems.cart.cartItems.map(
                                                 (cart) => (
-                                                    <div className="row mb-4">
-                                                        <div className="col-md-5 col-lg-3 col-xl-3">
-                                                            <div className="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                                                <img
-                                                                    className="img-fluid w-100"
-                                                                    src={
-                                                                        "http://localhost:2000/public/" +
-                                                                        cart.img
-                                                                    }
-                                                                    alt="Sample"
-                                                                />
-                                                                <a href="#!">
-                                                                    <div className="mask">
-                                                                        <img
-                                                                            className="img-fluid w-100"
-                                                                            src={
-                                                                                "http://localhost:2000/public/" +
-                                                                                cart.img
-                                                                            }
-                                                                            alt="oke"
-                                                                        />
-                                                                        <div className="mask rgba-black-slight" />
-                                                                    </div>
-                                                                </a>
+                                                    <div>
+                                                        <div
+                                                            className="row mb-4"
+                                                            key={cart._id}
+                                                        >
+                                                            <div className="col-md-5 col-lg-3 col-xl-3">
+                                                                <div className="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                                                    <img
+                                                                        className="img-fluid w-100"
+                                                                        src={
+                                                                            "http://localhost:2000/public/" +
+                                                                            cart.img
+                                                                        }
+                                                                        alt="Sample"
+                                                                    />
+                                                                    <a href="#!">
+                                                                        <div className="mask">
+                                                                            <img
+                                                                                className="img-fluid w-100"
+                                                                                src={
+                                                                                    "http://localhost:2000/public/" +
+                                                                                    cart.img
+                                                                                }
+                                                                                alt="oke"
+                                                                            />
+                                                                            <div className="mask rgba-black-slight" />
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="col-md-7 col-lg-9 col-xl-9">
-                                                            <div>
-                                                                <div className="d-flex justify-content-between">
-                                                                    {/* <div>
+                                                            <div className="col-md-7 col-lg-9 col-xl-9">
+                                                                <div>
+                                                                    <div className="d-flex justify-content-between">
+                                                                        {/* <div>
                                                                         <h5>
                                                                             Blue
                                                                             denim
@@ -122,20 +133,20 @@ class Cart extends Component {
                                                                             M
                                                                         </p>
                                                                     </div> */}
-                                                                    <div>
-                                                                        <div className="def-number-input number-input safari_only mb-0 w-100">
-                                                                            <h3>
-                                                                                Số
-                                                                                lượng:
-                                                                                {
-                                                                                    cart.quantity
-                                                                                }
-                                                                            </h3>
-                                                                            {/* <button
+                                                                        <div>
+                                                                            <div className="def-number-input number-input safari_only mb-0 w-100">
+                                                                                <h3>
+                                                                                    Số
+                                                                                    lượng:{" "}
+                                                                                    {
+                                                                                        cart.quantity
+                                                                                    }
+                                                                                </h3>
+                                                                                {/* <button
                                                                                 onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
                                                                                 className="minus decrease"
                                                                             /> */}
-                                                                            {/* <input
+                                                                                {/* <input
                                                                                 className="quantity"
                                                                                 min={
                                                                                     0
@@ -146,12 +157,12 @@ class Cart extends Component {
                                                                                 }
                                                                                 type="number"
                                                                             /> */}
-                                                                            <button
+                                                                                {/* <button
                                                                                 onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                                                                                 className="plus increase"
-                                                                            />
-                                                                        </div>
-                                                                        {/* <small
+                                                                            /> */}
+                                                                            </div>
+                                                                            {/* <small
                                                                             id="passwordHelpBlock"
                                                                             className="form-text text-muted text-center"
                                                                         >
@@ -159,53 +170,54 @@ class Cart extends Component {
                                                                             1
                                                                             piece)
                                                                         </small> */}
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                                <div className="d-flex justify-content-between align-items-center">
-                                                                    <div>
-                                                                        <a
-                                                                            href="#!"
-                                                                            type="button"
-                                                                            className="card-link-secondary small text-uppercase mr-3"
-                                                                            onClick={() =>
-                                                                                this.handleDelete(
-                                                                                    cart.product
-                                                                                )
-                                                                            }
-                                                                        >
-                                                                            <i className="fas fa-trash-alt mr-1" />{" "}
-                                                                            Remove
-                                                                            item{" "}
-                                                                        </a>
-                                                                        <a
-                                                                            href="#!"
-                                                                            type="button"
-                                                                            className="card-link-secondary small text-uppercase"
-                                                                        >
-                                                                            <i className="fas fa-heart mr-1" />{" "}
-                                                                            Move
-                                                                            to
-                                                                            wish
-                                                                            list{" "}
-                                                                        </a>
-                                                                    </div>
-                                                                    <p className="mb-0">
-                                                                        <span>
-                                                                            <strong id="summary">
-                                                                                {cart.price *
-                                                                                    cart.quantity}
+                                                                    <div className="d-flex justify-content-between align-items-center">
+                                                                        <div>
+                                                                            <a
+                                                                                href="#!"
+                                                                                type="button"
+                                                                                className="card-link-secondary small text-uppercase mr-3"
+                                                                                onClick={() =>
+                                                                                    this.handleDelete(
+                                                                                        cart.product
+                                                                                    )
+                                                                                }
+                                                                            >
+                                                                                <i className="fas fa-trash-alt mr-1" />{" "}
+                                                                                Remove
+                                                                                item{" "}
+                                                                            </a>
+                                                                            <a
+                                                                                href="#!"
+                                                                                type="button"
+                                                                                className="card-link-secondary small text-uppercase"
+                                                                            >
+                                                                                <i className="fas fa-heart mr-1" />{" "}
+                                                                                Move
+                                                                                to
+                                                                                wish
+                                                                                list{" "}
+                                                                            </a>
+                                                                        </div>
+                                                                        <p className="mb-0">
+                                                                            <span>
+                                                                                <strong id="summary">
+                                                                                    {cart.price *
+                                                                                        cart.quantity}
 
-                                                                                $
-                                                                            </strong>
-                                                                        </span>
-                                                                    </p>
+                                                                                    $
+                                                                                </strong>
+                                                                            </span>
+                                                                        </p>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <hr className="mb-4" />
                                                     </div>
                                                 )
                                             )}
-                                        <hr className="mb-4" />
                                     </div>
                                 </div>
 
@@ -274,12 +286,17 @@ class Cart extends Component {
                                                 </span>
                                             </li>
                                         </ul>
-                                        <button
-                                            type="button"
-                                            className="btn btn-primary btn-block"
+                                        <a
+                                            href={"/checkout/" + cartId}
+                                            style={{ textDecoration: "none" }}
                                         >
-                                            go to checkout
-                                        </button>
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary btn-block"
+                                            >
+                                                go to checkout
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
                                 {/* Card */}

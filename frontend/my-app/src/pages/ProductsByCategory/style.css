@@ -1,0 +1,10 @@
+body {
+    /* background-color: #eeeeee !important; */
+}
+#content {
+    margin-top: 0px !important;
+    padding-top: 20px;
+}
+div .App {
+    background-color: white;
+}

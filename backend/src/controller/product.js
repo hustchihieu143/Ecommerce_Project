@@ -72,11 +72,13 @@ exports.getProductsBySlug = (req, res) => {
                         },
                     });
                 } else {
-                    return res.status(404).json({
-                        message: "Not found product.",
+                    return res.status(200).json({
+                        message: "not found product",
                     });
                 }
             });
+        } else {
+            return res.status(404).json({ message: "Not found category" });
         }
     });
 };
@@ -180,6 +182,28 @@ exports.searchProductByName = async function (req, res) {
                 products: product,
                 message: true,
             });
+        }
+    });
+};
+
+exports.getProductsByCategoryId = async function (req, res) {
+    let categoryId = req.params.categoryId;
+    await Category.find({ parentId: categoryId }).exec((err, category) => {
+        if (err) return res.status(404).json({ message: err.message });
+        else {
+            if (category) {
+                Product.find({ category: category }).exec((err, products) => {
+                    if (err)
+                        return res.status(404).json({ message: err.message });
+                    else {
+                        if (products) {
+                            return res.status(200).json({
+                                products: products,
+                            });
+                        }
+                    }
+                });
+            }
         }
     });
 };

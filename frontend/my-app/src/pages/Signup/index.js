@@ -3,7 +3,6 @@ import axios from "axios";
 import Header from "../../components/Header";
 import "./style.css";
 import { withRouter } from "react-router";
-import { Form, Button } from "react-bootstrap";
 
 class Signup extends Component {
     constructor(props) {
@@ -51,52 +50,115 @@ class Signup extends Component {
         return (
             <>
                 <Header> </Header>
-                <Form onSubmit={this.handleSubmit}>
-                    <h1>Signup</h1>
-                    <p className="err"></p>
-                    <Form.Group>
-                        <Form.Label>First name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter first name"
-                            value={this.state.firstName}
-                            onChange={this.onChangeFirstName}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label>Last name</Form.Label>
-                        <Form.Control
-                            type="text"
-                            placeholder="Enter last name"
-                            value={this.state.lastName}
-                            onChange={this.onChangeLastName}
-                        />
-                    </Form.Group>
+                <div>
+                    <div className="card bg-light">
+                        <article
+                            className="card-body mx-auto"
+                            style={{ maxWidth: "400px" }}
+                        >
+                            <h4 className="card-title mt-3 text-center">
+                                Create Account
+                            </h4>
+                            <p className="text-center">
+                                Get started with your free account
+                            </p>
 
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control
-                            type="email"
-                            placeholder="Enter email"
-                            value={this.state.email}
-                            onChange={this.onChangeEmail}
-                        />
-                    </Form.Group>
-
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.onChangePassword}
-                        />
-                    </Form.Group>
-
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
-                </Form>
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="form-group input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            {" "}
+                                            <i className="fa fa-user" />{" "}
+                                        </span>
+                                    </div>
+                                    <input
+                                        name
+                                        className="form-control"
+                                        placeholder="First name"
+                                        type="text"
+                                        value={this.state.firstName}
+                                        onChange={this.onChangeFirstName}
+                                    />
+                                    <input
+                                        name
+                                        className="form-control"
+                                        placeholder="Last name"
+                                        type="text"
+                                        value={this.state.lastName}
+                                        onChange={this.onChangeLastName}
+                                    />
+                                </div>{" "}
+                                {/* form-group// */}
+                                <div className="form-group input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            {" "}
+                                            <i className="fa fa-envelope" />{" "}
+                                        </span>
+                                    </div>
+                                    <input
+                                        name
+                                        className="form-control"
+                                        placeholder="Email address"
+                                        type="email"
+                                        value={this.state.email}
+                                        onChange={this.onChangeEmail}
+                                    />
+                                </div>{" "}
+                                {/* form-group// */}
+                                {/* form-group// */}
+                                {/* form-group end.// */}
+                                <div className="form-group input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            {" "}
+                                            <i className="fa fa-lock" />{" "}
+                                        </span>
+                                    </div>
+                                    <input
+                                        className="form-control"
+                                        placeholder="Create password"
+                                        type="password"
+                                        value={this.state.password}
+                                        onChange={this.onChangePassword}
+                                    />
+                                </div>{" "}
+                                {/* form-group// */}
+                                <div className="form-group input-group">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">
+                                            {" "}
+                                            <i className="fa fa-lock" />{" "}
+                                        </span>
+                                    </div>
+                                    <input
+                                        className="form-control"
+                                        placeholder="Repeat password"
+                                        type="password"
+                                    />
+                                </div>{" "}
+                                {/* form-group// */}
+                                <div className="form-group">
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary btn-block"
+                                    >
+                                        {" "}
+                                        Create Account
+                                    </button>
+                                </div>{" "}
+                                {/* form-group// */}
+                                <p className="text-center">
+                                    Have an account? <a href>Log In</a>{" "}
+                                </p>
+                            </form>
+                        </article>
+                    </div>{" "}
+                    {/* card.// */}
+                    {/*container end.//*/}
+                    <br />
+                    <br />
+                </div>
             </>
         );
     }

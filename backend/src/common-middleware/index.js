@@ -6,6 +6,7 @@ exports.requireSignin = (req, res, next) => {
         const token = req.headers.authorization;
         const user = jwt.verify(token, process.env.JWT_SECRET); // submit token to show profile
         req.user = user;
+        console.log("toten: ", token);
     } else {
         return res.status(400).json({ message: "Authorization required" });
     }
@@ -13,33 +14,36 @@ exports.requireSignin = (req, res, next) => {
     next();
 };
 
-exports.userMiddleware = (req, res, next) => {
-    const id = req.user._id;
-    User.findOne({ _id: id }).exec((error, user) => {
-        if (error) {
-            return res.status(400).json({ message: "user not found" });
-        }
+exports.userMiddleware = async (req, res, next) => {
+    try {
+        const id = req.user._id;
+        let user = await User.findOne({ _id: id });
         if (user) {
             if (user.role !== "user") {
                 return res.status(400).json({ message: "Access denied" });
             }
+        } else {
+            return res.status(400).json({ message: "user not found" });
         }
-    });
-    console.log("pass user middleware");
+    } catch (err) {
+        return res.status(400).json({ message: err.message });
+    }
     next();
 };
 
-exports.adminMiddleware = (req, res, next) => {
-    const id = req.user._id;
-    User.findOne({ _id: id }).exec((error, user) => {
-        if (error) {
-            return res.status(400).json({ message: "admin not found" });
-        }
+exports.adminMiddleware = async (req, res, next) => {
+    try {
+        const id = req.user._id;
+        let user = await User.findOne({ _id: id });
         if (user) {
             if (user.role !== "admin") {
                 return res.status(400).json({ message: "Access denied" });
             }
+        } else {
+            return res.status(400).json({ message: "admin not found" });
         }
-    });
+    } catch (err) {
+        return res.status(400).json({ message: err.message });
+    }
     next();
 };
